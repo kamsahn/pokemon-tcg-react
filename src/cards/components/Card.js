@@ -10,12 +10,10 @@ class Card extends Component {
   }
 
   render () {
-    const { name, image, id } = this.props
+    const { image } = this.props
     return (
       <Fragment>
         <img src={image}/>
-        <p>{name}</p>
-        <p>{id}</p>
       </Fragment>
     )
   }
