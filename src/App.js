@@ -8,6 +8,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import CardSearch from './cards/components/CardSearch'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -56,6 +57,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
+        <CardSearch/>
       </React.Fragment>
     )
   }
