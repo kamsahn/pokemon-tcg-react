@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 // import Button from 'react-bootstrap/Button'
-import { getCards } from '../api.js'
+import { getCardsBySet } from '../api.js'
 import Card from './Card'
 import { store } from '../../store'
 
 const sortedCards = cards => cards.sort((a, b) => a.number - b.number)
 
-class CardSearch extends Component {
+class CardSetSearch extends Component {
   constructor () {
     super()
 
@@ -28,7 +28,7 @@ class CardSearch extends Component {
     event.preventDefault()
     const { setCode, setTotalCards } = this.state
     store.cards = []
-    getCards(setCode)
+    getCardsBySet(setCode)
       .on('data', response => {
         store.cards.push(response)
         if (store.cards.length === setTotalCards) {
@@ -79,4 +79,4 @@ class CardSearch extends Component {
   }
 }
 
-export default CardSearch
+export default CardSetSearch

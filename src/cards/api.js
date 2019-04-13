@@ -11,7 +11,11 @@ import pokemon from 'pokemontcgsdk'
 //   }
 // }
 
-export const getCards = (id) => (
+export const getCardsBySet = (id) => (
   pokemon.card.all({ setCode: id })
   // .on('data', sort)
+)
+
+export const getCardsByName = (name) => (
+  pokemon.card.all({ name })
 )
