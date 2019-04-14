@@ -10,3 +10,14 @@ export const deckIndex = (user) => (
     }
   })
 )
+
+export const deckCreate = (deck, user) => (
+  axios({
+    url: `${apiUrl}/decks`,
+    method: 'post',
+    headers: {
+      Authorization: 'Token token=' + user.token
+    },
+    data: deck
+  })
+)
