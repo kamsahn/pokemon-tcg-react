@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import DeckForms from './DeckForms'
 import { deckCreate } from '../api'
+import messages from '../messages'
 
 class DeckCreate extends Component {
   constructor () {
@@ -22,13 +23,17 @@ class DeckCreate extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const { user } = this.props
+    const { user, alert } = this.props
     deckCreate(this.state, user)
-      .then(console.log)
-      .catch(console.error)
+      .then(res => this.setState({ deck: res.data.deck, redirect: true }))
+      .catch(() => alert(messages.deckCreateFailure, 'danger'))
   }
 
   render () {
+    if (this.state.redirect) {
+      return <Redirect to={`decks/${this.state.deck.id}`}/>
+    }
+
     const { title } = this.state.deck
     return (
       <DeckForms

@@ -16,10 +16,7 @@ class DeckShow extends Component {
     const { user, alert } = this.props
     const id = this.props.match.params.id
     deckShow(user, id)
-      .then(res => {
-        console.log(res)
-        this.setState({ deck: res.data.deck })
-      })
+      .then(res => this.setState({ deck: res.data.deck }))
       .catch(() => alert(messages.deckShowFailure, 'danger'))
   }
 
