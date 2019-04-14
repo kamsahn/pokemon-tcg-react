@@ -8,6 +8,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import Home from './header/Home'
 import CardSetSearch from './cards/components/CardSetSearch'
 import CardNameSearch from './cards/components/CardNameSearch'
 
@@ -45,21 +46,26 @@ class App extends Component {
           </Alert>
         ))}
         <main className="container">
-          <Route path='/sign-up' render={() => (
+          <Route exact path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
-          <Route path='/sign-in' render={() => (
+          <Route exact path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+          <AuthenticatedRoute user={user} exact path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
+          <AuthenticatedRoute user={user} exact path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/search-set' render={() => (
+            <CardSetSearch alert={this.alert} user={user} />
+          )} />
+          <Route exact path='/search-name' render={() => (
+            <CardNameSearch alert={this.alert} user={user} />
+          )} />
         </main>
-        <CardSetSearch/>
-        <CardNameSearch/>
       </React.Fragment>
     )
   }

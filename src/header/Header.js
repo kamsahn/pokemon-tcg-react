@@ -23,11 +23,19 @@ const alwaysOptions = (
   </React.Fragment>
 )
 
+const searchOptions = (
+  <React.Fragment>
+    <Link to='/search-name'>Search By Name</Link>
+    <Link to='/search-set'>Search By Set</Link>
+  </React.Fragment>
+)
+
 const Header = ({ user }) => (
   <header className="main-header">
     <h1>Pokemon TCG Deck Builder</h1>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
+      { searchOptions }
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </nav>
