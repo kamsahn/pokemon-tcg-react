@@ -13,6 +13,7 @@ import CardSetSearch from './cards/components/CardSetSearch'
 import CardNameSearch from './cards/components/CardNameSearch'
 import DeckIndex from './decks/components/DeckIndex'
 import DeckShow from './decks/components/DeckShow'
+import DeckUpdate from './decks/components/DeckUpdate'
 import DeckCreate from './decks/components/DeckCreate'
 
 import Alert from 'react-bootstrap/Alert'
@@ -73,6 +74,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/decks/:id' render={() => (
             <DeckShow alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/decks/:id/edit' render={() => (
+            <DeckUpdate alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/decks-new' render={() => (
             <DeckCreate alert={this.alert} user={user} />

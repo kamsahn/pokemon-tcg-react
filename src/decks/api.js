@@ -21,13 +21,24 @@ export const deckShow = (user, id) => (
   })
 )
 
-export const deckCreate = (deck, user) => (
+export const deckCreate = (data, user) => (
   axios({
     url: `${apiUrl}/decks`,
     method: 'post',
     headers: {
       Authorization: 'Token token=' + user.token
     },
-    data: deck
+    data: data
+  })
+)
+
+export const deckUpdate = (data, user) => (
+  axios({
+    url: `${apiUrl}/decks/${data.deck.id}`,
+    method: 'patch',
+    headers: {
+      Authorization: 'Token token=' + user.token
+    },
+    data: data
   })
 )

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
 
@@ -22,6 +22,7 @@ class DeckShow extends Component {
 
   render () {
     const { deck } = this.state
+    const id = this.props.match.params.id
 
     if (!deck) {
       return (
@@ -32,6 +33,7 @@ class DeckShow extends Component {
     return (
       <Fragment>
         <h4>{deck.title}</h4>
+        <Link to={`${id}/edit`}>edit</Link>
       </Fragment>
     )
   }
