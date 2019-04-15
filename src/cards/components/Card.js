@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 class Card extends Component {
   constructor () {
@@ -13,7 +14,9 @@ class Card extends Component {
     const { image } = this.props
     return (
       <Fragment>
-        <img src={image}/>
+        <Link to='/card-show'>
+          <img src={image}/>
+        </Link>
       </Fragment>
     )
   }

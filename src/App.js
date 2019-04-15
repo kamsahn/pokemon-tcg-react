@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import Home from './header/Home'
 import CardSetSearch from './cards/components/CardSetSearch'
 import CardNameSearch from './cards/components/CardNameSearch'
+import CardShow from './cards/components/CardShow'
 import DeckIndex from './decks/components/DeckIndex'
 import DeckShow from './decks/components/DeckShow'
 import DeckUpdate from './decks/components/DeckUpdate'
@@ -68,6 +69,9 @@ class App extends Component {
           )} />
           <Route exact path='/search-name' render={() => (
             <CardNameSearch alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/card-show' render={() => (
+            <CardShow alert={this.alert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/decks' render={() => (
             <DeckIndex alert={this.alert} user={user} />
