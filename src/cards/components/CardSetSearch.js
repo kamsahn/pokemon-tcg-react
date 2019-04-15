@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { getCardsBySet } from '../api.js'
+import messages from '../messages'
 import Card from './Card'
 
 const sortedCards = cards => cards.sort((a, b) => a.number - b.number)
@@ -15,17 +16,16 @@ class CardSetSearch extends Component {
   }
 
   handleChange = event => {
-    this.setState({
-      setCode: event.target.value
-    })
+    this.setState({ setCode: event.target.value })
   }
 
   clickSearch = (event) => {
     event.preventDefault()
     const { setCode } = this.state
+    const { alert } = this.props
     getCardsBySet(setCode)
       .then(res => this.setState({ cards: sortedCards(res) }))
-      .catch(console.error)
+      .catch(() => alert(messages.searchBySetFailure, 'danger'))
   }
 
   render () {

@@ -5,5 +5,5 @@ export const getCardsBySet = (id) => (
 )
 
 export const getCardsByName = (name) => (
-  pokemon.card.all({ name })
+  pokemon.card.where({ name })
 )
