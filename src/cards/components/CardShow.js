@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
-import Form, { Control, Label } from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import messages from '../messages'
 import { cardCreate } from '../api'
+import { deckIndex } from '../../decks/api'
+import deckMessages from '../../decks/messages'
 
 class CardShow extends Component {
   constructor () {
@@ -13,11 +15,16 @@ class CardShow extends Component {
       card: {
         name: '',
         deck: ''
-      }
+      },
+      decks: []
     }
   }
 
   componentDidMount () {
+    const { user, alert } = this.props
+    deckIndex(user)
+      .then(res => this.setState({ decks: res.data.decks }))
+      .catch(() => alert(deckMessages.deckIndexFailure, 'danger'))
     this.setState({ card: this.props.location.state.card })
   }
 
@@ -40,19 +47,22 @@ class CardShow extends Component {
   }
 
   render () {
-    const { card } = this.state
+    const { card, decks } = this.state
 
-    if (!card) {
-      return <p>loading card...</p>
+    if (!card || !decks) {
+      return <p>loading...</p>
     }
 
     return (
       <Fragment>
         <img src={card.image}/>
         <Form onSubmit={this.handleSubmit}>
-          <Label htmlFor="card">Deck ID: </Label>
-          <Control value={card.deck} name="deck" onChange={this.handleChange} placeholer='enter deck id'/>
-
+          <select onChange={this.handleChange} id="deck-select" name="deck">
+            <option value="">--Choose a deck--</option>
+            {decks.map(deck => (
+              <option key={deck.id} value={deck.id}>{deck.title}</option>
+            ))}
+          </select>
           <Button variant="info" type="submit">Submit</Button>
         </Form>
       </Fragment>
