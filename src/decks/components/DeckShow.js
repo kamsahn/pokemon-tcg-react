@@ -57,7 +57,13 @@ class DeckShow extends Component {
           <p>No cards in this deck yet. Try adding some!</p>
         )}
         <Link to={`${id}/edit`}>Edit</Link>
-        <Link to={`${id}/delete`}>Delete</Link>
+        <Link to={{
+          pathname: `${id}/delete`,
+          state: { deck: {
+            title: deck.title,
+            id: deck._id
+          } }
+        }}>Delete</Link>
         <Link className="btn btn-info" to='/search-name'>Search By Name</Link>
         <Link className="btn btn-info" to='/search-set'>Search By Set</Link>
       </Fragment>

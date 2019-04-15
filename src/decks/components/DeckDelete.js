@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter, Link, Redirect } from 'react-router-dom'
-import { deckShow, deckDelete } from '../api'
+import { deckDelete } from '../api'
 import messages from '../messages'
 import Form, { Label } from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -15,11 +15,7 @@ class DeckDelete extends Component {
   }
 
   componentDidMount () {
-    const { user, alert } = this.props
-    const id = this.props.match.params.id
-    deckShow(user, id)
-      .then(res => this.setState({ deck: res.data.deck }))
-      .catch(() => alert(messages.deckShowFailure, 'danger'))
+    this.setState({ deck: this.props.location.state.deck })
   }
 
   handleDelete = event => {
