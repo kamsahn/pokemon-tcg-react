@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react'
-// import Button from 'react-bootstrap/Button'
 import { getCardsBySet } from '../api.js'
 import Card from './Card'
-import { store } from '../../store'
 
 const sortedCards = cards => cards.sort((a, b) => a.number - b.number)
 
@@ -12,33 +10,26 @@ class CardSetSearch extends Component {
 
     this.state = {
       cards: [],
-      setCode: null,
-      setTotalCards: null
+      setCode: null
     }
   }
 
   handleChange = event => {
     this.setState({
-      setCode: event.target.value,
-      setTotalCards: store.sets.find(set => set.code === event.target.value).totalCards
+      setCode: event.target.value
     })
   }
 
   clickSearch = (event) => {
     event.preventDefault()
-    const { setCode, setTotalCards } = this.state
-    store.cards = []
+    const { setCode } = this.state
     getCardsBySet(setCode)
-      .on('data', response => {
-        store.cards.push(response)
-        if (store.cards.length === setTotalCards) {
-          this.setState({ cards: sortedCards(store.cards) })
-        }
-      })
+      .then(res => this.setState({ cards: sortedCards(res) }))
+      .catch(console.error)
   }
 
   render () {
-    const { cards, setTotalCards } = this.state
+    const { cards } = this.state
     return (
       <Fragment>
         <form onSubmit={this.clickSearch}>
@@ -64,7 +55,8 @@ class CardSetSearch extends Component {
           </select>
           <input type="submit" className="btn btn-info space" value="Get Cards"/>
         </form>
-        {cards && cards.length === setTotalCards ? (
+
+        {cards ? (
           cards.map(card => (
             <Card
               key={card.id}
