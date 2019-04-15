@@ -32,10 +32,7 @@ class CardShow extends Component {
     event.preventDefault()
     const { user, alert } = this.props
     cardCreate(user, this.state)
-      .then((res) => {
-        alert(messages.cardCreateSuccess, 'success')
-        console.log(res)
-      })
+      .then((res) => alert(messages.cardCreateSuccess, 'success'))
       .catch(() => alert(messages.cardCreateFailure, 'danger'))
   }
 
