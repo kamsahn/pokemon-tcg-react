@@ -1,15 +1,17 @@
 import React, { Fragment } from 'react'
+import Form, { Control, Label } from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const DeckForms = (
   { title, handleSubmit, handleChange }
 ) => (
   <Fragment>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title: </label>
-      <input value={title} name="title" onChange={handleChange} placeholer='enter deck title'/>
+    <Form onSubmit={handleSubmit}>
+      <Label htmlFor="title">Title: </Label>
+      <Control value={title} name="title" onChange={handleChange} placeholer='enter deck title'/>
 
-      <button type="submit">Submit</button>
-    </form>
+      <Button variant="info" type="submit">Submit</Button>
+    </Form>
   </Fragment>
 )
 

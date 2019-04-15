@@ -32,11 +32,11 @@ class DeckShow extends Component {
 
     return (
       <Fragment>
-        <h4>{deck.title}</h4>
+        <h4>{deck.title},,, {deck.id}</h4>
         {deck.cards ? (
           <Fragment>
             {deck.cards.map(card => (
-              <li key={card.id}>{card.name}</li>
+              <p key={card.id}>{card.name}</p>
             ))}
           </Fragment>
         ) : (
