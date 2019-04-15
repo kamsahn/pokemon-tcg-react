@@ -33,6 +33,15 @@ class DeckShow extends Component {
     return (
       <Fragment>
         <h4>{deck.title}</h4>
+        {deck.cards ? (
+          <Fragment>
+            {deck.cards.map(card => (
+              <li key={card.id}>{card.name}</li>
+            ))}
+          </Fragment>
+        ) : (
+          <p>No cards in this deck yet. Try adding some!</p>
+        )}
         <Link to={`${id}/edit`}>edit</Link>
       </Fragment>
     )
