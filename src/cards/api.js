@@ -20,3 +20,13 @@ export const cardCreate = (user, card) => (
     data: card
   })
 )
+
+export const cardDelete = (user, id) => (
+  axios({
+    url: `${apiUrl}/cards/${id}`,
+    method: 'delete',
+    headers: {
+      Authorization: 'Token token=' + user.token
+    }
+  })
+)

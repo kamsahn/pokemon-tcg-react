@@ -44,7 +44,13 @@ class DeckShow extends Component {
           <Fragment>
             {sortedCards(deck.cards).map(card => {
               c++
-              return <p key={card.id + c.toString()}>{card.name}</p>
+              return <p key={card.id + c.toString()}>{card.name} <Link to={{
+                pathname: '/card-delete',
+                state: { card: {
+                  name: card.name,
+                  id: card._id
+                } }
+              }}>X</Link></p>
             })}
           </Fragment>
         ) : (
