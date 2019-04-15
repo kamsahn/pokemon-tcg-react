@@ -31,12 +31,8 @@ class CardShow extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const { user, alert } = this.props
-    const { card } = this.state
     cardCreate(user, this.state)
-      .then(() => {
-        alert(messages.cardCreateSuccess, 'success')
-        this.setState({ card: { ...card, deck: '' } })
-      })
+      .then(() => alert(messages.cardCreateSuccess, 'success'))
       .catch(() => alert(messages.cardCreateFailure, 'danger'))
   }
 

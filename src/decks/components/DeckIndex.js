@@ -32,8 +32,8 @@ class DeckIndex extends Component {
         ) : (
           <Fragment>
             {decks.map(deck => (
-              <li key={deck.id}>
-                <Link to={`/decks/${deck.id}`}>{deck.title} created {deck.createdAt.split('T')[0]}</Link>
+              <li key={deck._id}>
+                <Link to={`/decks/${deck._id}`}>{deck.title} created {deck.createdAt.split('T')[0]}</Link>
               </li>
             ))}
           </Fragment>

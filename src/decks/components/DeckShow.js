@@ -29,7 +29,6 @@ class DeckShow extends Component {
   render () {
     const { deck } = this.state
     const id = this.props.match.params.id
-    let c = 0
 
     if (!deck) {
       return (
@@ -43,8 +42,7 @@ class DeckShow extends Component {
         {deck.cards ? (
           <Fragment>
             {sortedCards(deck.cards).map(card => {
-              c++
-              return <p key={card.id + c.toString()}>{card.name} <Link to={{
+              return <p key={card._id}>{card.name} <Link to={{
                 pathname: '/card-delete',
                 state: { card: {
                   name: card.name,
