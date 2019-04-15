@@ -42,7 +42,8 @@ class DeckShow extends Component {
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
         )}
-        <Link to={`${id}/edit`}>edit</Link>
+        <Link to={`${id}/edit`}>Edit</Link>
+        <Link to={`${id}/delete`}>Delete</Link>
         <Link className="btn btn-info" to='/search-name'>Search By Name</Link>
         <Link className="btn btn-info" to='/search-set'>Search By Set</Link>
       </Fragment>

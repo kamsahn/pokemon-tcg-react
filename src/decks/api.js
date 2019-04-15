@@ -42,3 +42,13 @@ export const deckUpdate = (data, user) => (
     data: data
   })
 )
+
+export const deckDelete = (user, id) => (
+  axios({
+    url: `${apiUrl}/decks/${id}`,
+    method: 'delete',
+    headers: {
+      Authorization: 'Token token=' + user.token
+    }
+  })
+)
