@@ -3,6 +3,12 @@ import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
 
+const sortedCards = cards => cards.sort((a, b) => {
+  if (a.name < b.name) { return -1 }
+  if (a.name > b.name) { return 1 }
+  return 0
+})
+
 class DeckShow extends Component {
   constructor () {
     super()
@@ -23,6 +29,7 @@ class DeckShow extends Component {
   render () {
     const { deck } = this.state
     const id = this.props.match.params.id
+    let c = 0
 
     if (!deck) {
       return (
@@ -35,9 +42,10 @@ class DeckShow extends Component {
         <h4>{deck.title}</h4>
         {deck.cards ? (
           <Fragment>
-            {deck.cards.map(card => (
-              <p key={card.id}>{card.name}</p>
-            ))}
+            {sortedCards(deck.cards).map(card => {
+              c++
+              return <p key={card.id + c.toString()}>{card.name}</p>
+            })}
           </Fragment>
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
