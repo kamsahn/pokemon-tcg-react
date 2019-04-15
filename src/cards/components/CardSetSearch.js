@@ -71,6 +71,7 @@ class CardSetSearch extends Component {
               id={card.id}
               name={card.name}
               image={card.imageUrl}
+              user={this.props.user}
             />
           ))
         ) : '' }
