@@ -49,8 +49,7 @@ class CardNameSearch extends Component {
               return (
                 <Card
                   key={card.id}
-                  name={card.name}
-                  image={card.imageUrl}
+                  card={card}
                   user={this.props.user}
                 />
               )

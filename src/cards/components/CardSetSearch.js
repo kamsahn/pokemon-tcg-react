@@ -60,9 +60,7 @@ class CardSetSearch extends Component {
           cards.map(card => (
             <Card
               key={card.id}
-              id={card.id}
-              name={card.name}
-              image={card.imageUrl}
+              card={card}
               user={this.props.user}
             />
           ))

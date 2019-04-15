@@ -32,7 +32,10 @@ class CardShow extends Component {
     event.preventDefault()
     const { user, alert } = this.props
     cardCreate(user, this.state)
-      .then(() => alert(messages.cardCreateSuccess, 'success'))
+      .then((res) => {
+        alert(messages.cardCreateSuccess, 'success')
+        console.log(res)
+      })
       .catch(() => alert(messages.cardCreateFailure, 'danger'))
   }
 
@@ -51,7 +54,7 @@ class CardShow extends Component {
 
     return (
       <Fragment>
-        <img src={card.image}/>
+        <img src={card.imageUrl}/>
         <Form onSubmit={this.handleSubmit}>
           <select onChange={this.handleChange} id="deck-select" name="deck">
             <option value="">--Choose a deck--</option>

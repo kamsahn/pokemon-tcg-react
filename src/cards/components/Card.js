@@ -11,20 +11,18 @@ class Card extends Component {
   }
 
   render () {
-    const { image, name, user } = this.props
+    const { card, user } = this.props
     return (
       <Fragment>
         {user ? (
           <Link to={{
             pathname: '/card-show',
-            state: { card:
-              { image, name }
-            }
+            state: { card }
           }}>
-            <img src={image}/>
+            <img src={card.imageUrl}/>
           </Link>
         ) : (
-          <img src={image}/>
+          <img src={card.imageUrl}/>
         )}
       </Fragment>
     )
