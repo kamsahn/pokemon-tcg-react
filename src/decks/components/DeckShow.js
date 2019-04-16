@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
+// import { store } from '../../store'
+import DeckDraw from './DeckDraw'
 
 const sortedCards = cards => cards.sort((a, b) => {
   if (a.name < b.name) { return -1 }
@@ -42,13 +44,15 @@ class DeckShow extends Component {
         {deck.cards ? (
           <Fragment>
             {sortedCards(deck.cards).map(card => {
-              return <p key={card._id}>{card.name} <Link to={{
-                pathname: '/card-delete',
-                state: { card: {
-                  name: card.name,
-                  id: card._id
-                } }
-              }}>X</Link></p>
+              return (
+                <p key={card._id}> {card.name} <Link to={{
+                  pathname: '/card-delete',
+                  state: { card: {
+                    name: card.name,
+                    id: card._id
+                  } }
+                }}>X</Link></p>
+              )
             })}
           </Fragment>
         ) : (
@@ -64,6 +68,9 @@ class DeckShow extends Component {
         }}>Delete</Link>
         <Link className="btn btn-info" to='/search-name'>Search By Name</Link>
         <Link className="btn btn-info" to='/search-set'>Search By Set</Link>
+        {deck.cards && deck.cards.length > 6 ? (
+          <DeckDraw deck={deck}/>
+        ) : ''}
       </Fragment>
     )
   }

@@ -30,10 +30,10 @@ class CardShow extends Component {
     deckIndex(user)
       .then(res => this.setState({ decks: res.data.decks }))
       .catch(() => alert(deckMessages.deckIndexFailure, 'danger'))
-    this.setState({
-      card: this.props.location.state.card,
-      type: this.props.location.state.card.types[0]
-    })
+    this.setState({ card: this.props.location.state.card })
+    if (this.props.location.state.card.types) {
+      this.setState({ type: this.props.location.state.card.types[0] })
+    }
   }
 
   handleSubmit = event => {
@@ -64,12 +64,16 @@ class CardShow extends Component {
         {typeObj ? (
           <img src={typeObj.imageUrl}/>
         ) : ''}
-        {card.attacks.map(attack => (
-          <Attack
-            key={attack.name}
-            attack={attack}
-          />
-        ))}
+        {card.attacks ? (
+          <Fragment>
+            {card.attacks.map(attack => (
+              <Attack
+                key={attack.name}
+                attack={attack}
+              />
+            ))}
+          </Fragment>
+        ) : ''}
         <Form onSubmit={this.handleSubmit}>
           <select onChange={this.handleChange} id="deck-select" name="deck">
             <option value="">--Choose a deck--</option>
