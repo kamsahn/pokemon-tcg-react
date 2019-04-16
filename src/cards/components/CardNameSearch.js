@@ -37,7 +37,7 @@ class CardNameSearch extends Component {
     const { cards } = this.state
 
     return (
-      <Fragment>
+      <div className="flex-col-center my-3">
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
           <input className="btn btn-info mx-3" type='submit' value='Get Card'/>
@@ -56,7 +56,7 @@ class CardNameSearch extends Component {
             })}
           </Fragment>
         ) : ''}
-      </Fragment>
+      </div>
     )
   }
 }

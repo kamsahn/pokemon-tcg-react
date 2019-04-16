@@ -8,6 +8,25 @@ body {
   margin: 30px;
 }
 
+.drop-search {
+  background-color: #dbdbdb !important;
+}
+
+.flex-col-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sm-btn-x {
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  font-size: .85rem;
+  margin-left: .5rem;
+  padding: .25rem;
+}
+
 .space {
   margin: 15px;
 }

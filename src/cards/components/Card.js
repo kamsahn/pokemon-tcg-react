@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 class Card extends Component {
@@ -13,7 +13,7 @@ class Card extends Component {
   render () {
     const { card, user } = this.props
     return (
-      <Fragment>
+      <div className="my-1">
         {user ? (
           <Link to={{
             pathname: '/card-show',
@@ -24,7 +24,7 @@ class Card extends Component {
         ) : (
           <img src={card.imageUrl}/>
         )}
-      </Fragment>
+      </div>
     )
   }
 }

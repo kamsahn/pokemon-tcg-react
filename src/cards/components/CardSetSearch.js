@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { getCardsBySet } from '../api.js'
 import messages from '../messages'
 import Card from './Card'
@@ -31,9 +31,9 @@ class CardSetSearch extends Component {
   render () {
     const { cards } = this.state
     return (
-      <Fragment>
+      <div className="flex-col-center my-3">
         <form onSubmit={this.clickSearch}>
-          <select onChange={this.handleChange} id="set-select" name="set-select">
+          <select className="btn drop-search" onChange={this.handleChange} id="set-select" name="set-select">
             <option value="">--Choose a set--</option>
             <option value="base1">Base</option>
             <option value="base2">Jungle</option>
@@ -65,7 +65,7 @@ class CardSetSearch extends Component {
             />
           ))
         ) : '' }
-      </Fragment>
+      </div>
     )
   }
 }

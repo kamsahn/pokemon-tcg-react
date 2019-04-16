@@ -6,7 +6,7 @@ import messages from '../messages'
 import { cardCreate } from '../api'
 import { deckIndex } from '../../decks/api'
 import deckMessages from '../../decks/messages'
-import { store } from '../../store'
+// import { store } from '../../store'
 import Attack from './Attack'
 
 class CardShow extends Component {
@@ -51,19 +51,15 @@ class CardShow extends Component {
   }
 
   render () {
-    const { card, decks, type } = this.state
-    const typeObj = store.types.find(obj => obj.type === type)
+    const { card, decks } = this.state
 
     if (!card) {
       return <p>loading...</p>
     }
 
     return (
-      <Fragment>
+      <div className="flex-col-center my-2">
         <img src={card.imageUrl}/>
-        {typeObj ? (
-          <img src={typeObj.imageUrl}/>
-        ) : ''}
         {card.attacks ? (
           <Fragment>
             {card.attacks.map(attack => (
@@ -75,7 +71,7 @@ class CardShow extends Component {
           </Fragment>
         ) : ''}
         <Form onSubmit={this.handleSubmit}>
-          <select onChange={this.handleChange} id="deck-select" name="deck">
+          <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
             <option value="">--Choose a deck--</option>
             {decks.map(deck => (
               <option key={deck.id} value={deck.id}>{deck.title}</option>
@@ -83,7 +79,7 @@ class CardShow extends Component {
           </select>
           <Button variant="info" type="submit">Submit</Button>
         </Form>
-      </Fragment>
+      </div>
     )
   }
 }

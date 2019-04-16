@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
-// import { store } from '../../store'
+import { store } from '../../store'
 import DeckDraw from './DeckDraw'
 
 const sortedCards = cards => cards.sort((a, b) => {
@@ -45,13 +45,17 @@ class DeckShow extends Component {
           <Fragment>
             {sortedCards(deck.cards).map(card => {
               return (
-                <p key={card._id}> {card.name} <Link to={{
-                  pathname: '/card-delete',
-                  state: { card: {
-                    name: card.name,
-                    id: card._id
-                  } }
-                }}>X</Link></p>
+                <p key={card._id}>
+                  {card.types ? (
+                    <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
+                  ) : ''}
+                  {card.name} <Link className="sm-btn-x" to={{
+                    pathname: '/card-delete',
+                    state: { card: {
+                      name: card.name,
+                      id: card._id
+                    } }
+                  }}>X</Link></p>
               )
             })}
           </Fragment>
