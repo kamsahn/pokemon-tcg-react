@@ -6,6 +6,8 @@ import messages from '../messages'
 import { cardCreate } from '../api'
 import { deckIndex } from '../../decks/api'
 import deckMessages from '../../decks/messages'
+import { store } from '../../store'
+import Attack from './Attack'
 
 class CardShow extends Component {
   constructor () {
@@ -14,9 +16,12 @@ class CardShow extends Component {
     this.state = {
       card: {
         name: '',
-        deck: ''
+        deck: '',
+        types: [],
+        attacks: []
       },
-      decks: []
+      decks: [],
+      type: ''
     }
   }
 
@@ -25,7 +30,10 @@ class CardShow extends Component {
     deckIndex(user)
       .then(res => this.setState({ decks: res.data.decks }))
       .catch(() => alert(deckMessages.deckIndexFailure, 'danger'))
-    this.setState({ card: this.props.location.state.card })
+    this.setState({
+      card: this.props.location.state.card,
+      type: this.props.location.state.card.types[0]
+    })
   }
 
   handleSubmit = event => {
@@ -43,15 +51,25 @@ class CardShow extends Component {
   }
 
   render () {
-    const { card, decks } = this.state
+    const { card, decks, type } = this.state
+    const typeObj = store.types.find(obj => obj.type === type)
 
-    if (!card || !decks) {
+    if (!card) {
       return <p>loading...</p>
     }
 
     return (
       <Fragment>
         <img src={card.imageUrl}/>
+        {typeObj ? (
+          <img src={typeObj.imageUrl}/>
+        ) : ''}
+        {card.attacks.map(attack => (
+          <Attack
+            key={attack.name}
+            attack={attack}
+          />
+        ))}
         <Form onSubmit={this.handleSubmit}>
           <select onChange={this.handleChange} id="deck-select" name="deck">
             <option value="">--Choose a deck--</option>

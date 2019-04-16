@@ -52,5 +52,25 @@ export const store = {
     { code: 'ecard3',
       name: 'Skyridge',
       totalCards: 182 }
+  ],
+  types: [
+    { type: 'Grass',
+      imageUrl: 'https://i.imgur.com/t4xvNDl.png' },
+    { type: 'Fire',
+      imageUrl: 'https://i.imgur.com/bsmavYI.png' },
+    { type: 'Water',
+      imageUrl: 'https://i.imgur.com/8BFSwEa.png' },
+    { type: 'Lightning',
+      imageUrl: 'https://i.imgur.com/OPO7XE4.png' },
+    { type: 'Fighting',
+      imageUrl: 'https://i.imgur.com/kOOT3oz.png' },
+    { type: 'Psychic',
+      imageUrl: 'https://i.imgur.com/wwb2X65.png' },
+    { type: 'Colorless',
+      imageUrl: 'https://i.imgur.com/Y2prJ63.png' },
+    { type: 'Darkness',
+      imageUrl: 'https://i.imgur.com/a5gl2JU.png' },
+    { type: 'Metal',
+      imageUrl: 'https://i.imgur.com/wOWplV9.png' }
   ]
 }
