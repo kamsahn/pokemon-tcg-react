@@ -24,7 +24,7 @@ API: Repo: https://github.com/kamsahn/pokemon-tcg-express
 
 - [] Styling and user experience upgrade
 - [] Deck copying for smaller edits
-- [] Hand draw simulator for testing deck viability
+- [x] Hand draw simulator for testing deck viability
 - [x] 60 card deck limit
 - [x] 4 of a kind rule for cards (excluding energy cards)
 - [] Win/lose counter for deck resource
