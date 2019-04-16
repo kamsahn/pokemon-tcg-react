@@ -25,8 +25,13 @@ class DeckCreate extends Component {
     event.preventDefault()
     const { user, alert } = this.props
     deckCreate(this.state, user)
-      .then(res => this.setState({ deck: res.data.deck, redirect: true }))
-      .catch(() => alert(messages.deckCreateFailure, 'danger'))
+      .then(res => {
+        this.setState({ deck: res.data.deck, redirect: true })
+      })
+      .catch(() => {
+        this.setState({ deck: { title: '' } })
+        alert(messages.deckCreateFailure, 'danger')
+      })
   }
 
   render () {

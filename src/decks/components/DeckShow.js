@@ -58,6 +58,8 @@ class DeckShow extends Component {
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
         )}
+        {deck.wins > -1 ? (<p>Wins: {deck.wins}</p>) : ''}
+        {deck.loses > -1 ? (<p>Loses: {deck.loses}</p>) : ''}
         <Link to={`${id}/edit`}>Edit</Link>
         <Link to={{
           pathname: `${id}/delete`,

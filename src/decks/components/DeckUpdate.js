@@ -37,7 +37,6 @@ class DeckUpdate extends Component {
 
   render () {
     if (this.state.redirect) {
-      // const id = this.props.match.params.id
       return <Redirect to='/decks'/>
     }
 
@@ -45,10 +44,12 @@ class DeckUpdate extends Component {
       return <p>Loading deck...</p>
     }
 
-    const { title } = this.state.deck
+    const { deck } = this.state
     return (
       <DeckForms
-        title={title}
+        title={deck.title}
+        wins={deck.wins}
+        loses={deck.loses}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />

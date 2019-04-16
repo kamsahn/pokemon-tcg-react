@@ -21,8 +21,10 @@ export const deckShow = (user, id) => (
   })
 )
 
-export const deckCreate = (data, user) => (
-  axios({
+export const deckCreate = (data, user) => {
+  data.deck.wins = 0
+  data.deck.loses = 0
+  return axios({
     url: `${apiUrl}/decks`,
     method: 'post',
     headers: {
@@ -30,7 +32,7 @@ export const deckCreate = (data, user) => (
     },
     data: data
   })
-)
+}
 
 export const deckUpdate = (data, user) => (
   axios({
