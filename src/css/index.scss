@@ -82,7 +82,7 @@ body {
 }
 
 .win-lose-field {
-  width: 2.5rem !important;
+  width: 3.5rem !important;
 }
 
 @media (max-width: 350px) {
@@ -98,5 +98,9 @@ body {
   .search-by {
     align-items: center;
     flex-direction: column;
+  }
+
+  .win-lose-field {
+    width: 2.5rem !important;
   }
 }
