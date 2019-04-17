@@ -3,7 +3,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const Home = () => (
   <Jumbotron className='my-3'>
-    <h1>Welcome to the Pokemon TCG Deck Builder!</h1>
+    <h3>Welcome to the PokeDeck Builder for Pokemon TCG!</h3>
     <p>
       This is an easy-to-use app for building Pokemon Card decks, specifically
       from the Wizards of the Coast sets. As a visitor, you can browse cards from
@@ -11,7 +11,7 @@ const Home = () => (
       access later.
     </p>
     <hr></hr>
-    <p>
+    <p className="disclaimer">
       This app is not associated with Wizards of the Coast, Nintendo, or The
       Pokemon company.
     </p>

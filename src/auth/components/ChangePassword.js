@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { changePassword } from '../api'
 import messages from '../messages'
 
+import Form, { Label, Control } from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 class ChangePassword extends Component {
   constructor () {
     super()
@@ -37,11 +40,11 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onChangePassword}>
+      <Form className='auth-form' onSubmit={this.onChangePassword}>
         <h3>Change Password</h3>
 
-        <label htmlFor="oldpw">Old Password</label>
-        <input
+        <Label htmlFor="oldpw">Old Password</Label>
+        <Control
           required
           name="oldPassword"
           value={oldPassword}
@@ -49,8 +52,8 @@ class ChangePassword extends Component {
           placeholder="Old Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="newPassword">New Password</label>
-        <input
+        <Label htmlFor="newPassword">New Password</Label>
+        <Control
           required
           name="newPassword"
           value={newPassword}
@@ -58,8 +61,8 @@ class ChangePassword extends Component {
           placeholder="New Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Change Password</button>
-      </form>
+        <Button variant="primary" type="submit">Change Password</Button>
+      </Form>
     )
   }
 }

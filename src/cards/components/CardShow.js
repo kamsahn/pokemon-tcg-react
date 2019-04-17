@@ -70,15 +70,17 @@ class CardShow extends Component {
             ))}
           </Fragment>
         ) : ''}
-        <Form onSubmit={this.handleSubmit}>
-          <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
-            <option value="">--Choose a deck--</option>
-            {decks.map(deck => (
-              <option key={deck.id} value={deck.id}>{deck.title}</option>
-            ))}
-          </select>
-          <Button variant="info" type="submit">Submit</Button>
-        </Form>
+        {decks.length > 0 ? (
+          <Form onSubmit={this.handleSubmit}>
+            <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
+              <option value="">--Choose a deck--</option>
+              {decks.map(deck => (
+                <option key={deck.id} value={deck.id}>{deck.title}</option>
+              ))}
+            </select>
+            <Button variant="info" type="submit">Submit</Button>
+          </Form>
+        ) : ''}
       </div>
     )
   }

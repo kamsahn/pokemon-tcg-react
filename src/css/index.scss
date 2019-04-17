@@ -1,3 +1,8 @@
+$black: #000;
+$bright-white: #f2f2f2;
+$delete: #ff3232;
+$light-gray: #dbdbdb;
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -8,8 +13,12 @@ body {
   margin: 30px;
 }
 
+.disclaimer {
+  font-size: .8em;
+}
+
 .drop-search {
-  background-color: #dbdbdb !important;
+  background-color: $light-gray !important;
 }
 
 .flex-col-center {
@@ -18,10 +27,25 @@ body {
   flex-direction: column;
 }
 
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+}
+
+.get-cards {
+  width: 10rem;
+}
+
+.home-link {
+  color: $black;
+  text-align: center;
+  width: 20rem;
+}
+
 .sm-btn-x {
-  background-color: red;
+  background-color: $delete;
   border-radius: 5px;
-  color: white;
+  color: $bright-white;
   font-size: .85rem;
   margin-left: .5rem;
   padding: .25rem;

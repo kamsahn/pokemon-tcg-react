@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { signUp, signIn } from '../api'
 import messages from '../messages'
 
+import Form, { Label, Control } from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 class SignUp extends Component {
   constructor () {
     super()
@@ -40,11 +43,11 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onSignUp}>
+      <Form className='auth-form' onSubmit={this.onSignUp}>
         <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
-        <input
+        <Label htmlFor="email">Email</Label>
+        <Control
           required
           name="email"
           value={email}
@@ -52,8 +55,8 @@ class SignUp extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <Label htmlFor="password">Password</Label>
+        <Control
           required
           name="password"
           value={password}
@@ -61,8 +64,8 @@ class SignUp extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
+        <Label htmlFor="passwordConfirmation">Confirm Password</Label>
+        <Control
           required
           name="passwordConfirmation"
           value={passwordConfirmation}
@@ -70,8 +73,8 @@ class SignUp extends Component {
           placeholder="Confirm Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign Up</button>
-      </form>
+        <Button variant="primary" type="submit">Sign Up</Button>
+      </Form>
     )
   }
 }

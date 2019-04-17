@@ -3,6 +3,8 @@ import { getCardsByName } from '../api'
 import messages from '../messages'
 import { store } from '../../store'
 import Card from './Card'
+import Form, { Control } from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 class CardNameSearch extends Component {
   constructor () {
@@ -38,10 +40,12 @@ class CardNameSearch extends Component {
 
     return (
       <div className="flex-col-center my-3">
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
-          <input className="btn btn-info mx-3" type='submit' value='Get Card'/>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <div className="flex-row-center">
+            <Control onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
+            <Button className="mx-3 get-cards" variant="info" type='submit'>Get Cards</Button>
+          </div>
+        </Form>
 
         {cards ? (
           <Fragment>
