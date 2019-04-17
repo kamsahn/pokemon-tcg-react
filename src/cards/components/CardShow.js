@@ -59,9 +59,10 @@ class CardShow extends Component {
 
     return (
       <div className="flex-col-center my-2">
-        <img src={card.imageUrl}/>
+        <img className="my-3" src={card.imageUrl}/>
         {card.attacks ? (
           <Fragment>
+            <h5>Attacks:</h5>
             {card.attacks.map(attack => (
               <Attack
                 key={attack.name}
@@ -78,7 +79,7 @@ class CardShow extends Component {
                 <option key={deck.id} value={deck.id}>{deck.title}</option>
               ))}
             </select>
-            <Button variant="info" type="submit">Submit</Button>
+            <Button className="m-2" variant="info" type="submit">Add</Button>
           </Form>
         ) : ''}
       </div>

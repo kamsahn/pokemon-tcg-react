@@ -63,7 +63,10 @@ class DeckShow extends Component {
                   ) : (
                     <img className="sm-icon mx-1" src={store.types[9].imageUrl}/>
                   )}
-                  {card.name}
+                  <Link className="dark-link" to={{
+                    pathname: '/card-show',
+                    state: { card }
+                  }}>{card.name}</Link>
                 </p>
               )
             })}

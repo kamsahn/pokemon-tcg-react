@@ -13,6 +13,18 @@ body {
   margin: 30px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.card-text {
+  max-width: 20rem;
+}
+
+.dark-link {
+  color: $black;
+}
+
 .disclaimer {
   font-size: .8em;
 }
