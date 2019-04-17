@@ -8,6 +8,7 @@ import { deckIndex } from '../../decks/api'
 import deckMessages from '../../decks/messages'
 // import { store } from '../../store'
 import Attack from './Attack'
+import Ability from './Ability'
 
 class CardShow extends Component {
   constructor () {
@@ -60,6 +61,14 @@ class CardShow extends Component {
     return (
       <div className="flex-col-center my-2">
         <img className="my-3" src={card.imageUrl}/>
+        {card.ability ? (
+          <Fragment>
+            <h5>Ability:</h5>
+            <Ability
+              ability={card.ability}
+            />
+          </Fragment>
+        ) : ''}
         {card.attacks ? (
           <Fragment>
             <h5>Attacks:</h5>
