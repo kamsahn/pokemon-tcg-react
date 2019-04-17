@@ -49,17 +49,19 @@ class DeckShow extends Component {
             {sortedCards(deck.cards).map(card => {
               return (
                 <p key={card._id}>
-                  <Link className="sm-btn-x" to={{
+                  <Link to={{
                     pathname: '/card-delete',
                     state: { card: {
                       name: card.name,
                       id: card._id
                     } }
-                  }}>X</Link>
+                  }}>
+                    <img className="sm-icon mx-2" src='https://i.imgur.com/Odp5zZY.jpg'/>
+                  </Link>
                   {card.types ? (
                     <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
                   ) : (
-                    <img className="no-type-img mx-1" src={store.types[9].imageUrl}/>
+                    <img className="sm-icon mx-1" src={store.types[9].imageUrl}/>
                   )}
                   {card.name}
                 </p>
