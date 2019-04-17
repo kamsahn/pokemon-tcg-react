@@ -80,7 +80,7 @@ class CardShow extends Component {
             ))}
           </Fragment>
         ) : ''}
-        {decks.length > 0 ? (
+        {decks.length > 0 && card.attacks ? (
           <Form onSubmit={this.handleSubmit}>
             <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
               <option value="">--Choose a deck--</option>

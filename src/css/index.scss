@@ -18,7 +18,7 @@ body {
 }
 
 .card-text {
-  max-width: 20rem;
+  width: 20rem;
 }
 
 .dark-link {
@@ -65,4 +65,10 @@ body {
 
 .title {
   text-align: center;
+}
+
+@media (max-width: 350px) {
+  .card-text {
+    width: 18rem;
+  }
 }
