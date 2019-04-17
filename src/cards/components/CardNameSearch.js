@@ -20,15 +20,19 @@ class CardNameSearch extends Component {
     event.preventDefault()
     const setCodes = store.sets.map(set => set.code)
     const { alert } = this.props
-    getCardsByName(this.state.name)
-      .then(res => res.filter(card => setCodes.includes(card.setCode)))
-      .then(res => this.setState({ cards: res }))
-      .then(() => {
-        if (this.state.cards.length === 0) {
-          alert(messages.searchByNameFailure, 'danger')
-        }
-      })
-      .catch(() => alert(messages.searchByNameFailure, 'danger'))
+    if (this.state.name) {
+      getCardsByName(this.state.name)
+        .then(res => res.filter(card => setCodes.includes(card.setCode)))
+        .then(res => this.setState({ cards: res }))
+        .then(() => {
+          if (this.state.cards.length === 0) {
+            alert(messages.searchByNameFailure, 'danger')
+          }
+        })
+        .catch(() => alert(messages.searchByNameFailure, 'danger'))
+    } else {
+      alert(messages.blankField, 'warning')
+    }
   }
 
   handleChange = event => {
@@ -41,7 +45,7 @@ class CardNameSearch extends Component {
     return (
       <div className="flex-col-center my-3">
         <Form onSubmit={this.handleSubmit}>
-          <div className="flex-row-center">
+          <div className="search-by">
             <Control onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
             <Button className="mx-3 get-cards" variant="info" type='submit'>Get Cards</Button>
           </div>

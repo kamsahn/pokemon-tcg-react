@@ -23,16 +23,20 @@ class CardSetSearch extends Component {
     event.preventDefault()
     const { setCode } = this.state
     const { alert } = this.props
-    getCardsBySet(setCode)
-      .then(res => this.setState({ cards: sortedCards(res) }))
-      .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    if (setCode) {
+      getCardsBySet(setCode)
+        .then(res => this.setState({ cards: sortedCards(res) }))
+        .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    } else {
+      alert(messages.blankField, 'warning')
+    }
   }
 
   render () {
     const { cards } = this.state
     return (
       <div className="flex-col-center my-3">
-        <form onSubmit={this.clickSearch}>
+        <form className="flex-col-center" onSubmit={this.clickSearch}>
           <select className="btn drop-search" onChange={this.handleChange} id="set-select" name="set-select">
             <option value="">--Choose a set--</option>
             <option value="base1">Base</option>

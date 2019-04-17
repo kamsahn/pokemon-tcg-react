@@ -54,6 +54,10 @@ body {
   width: 20rem;
 }
 
+.search-by {
+  display: flex;
+}
+
 .sm-icon {
   height: 20px;
   width: 20px;
@@ -70,5 +74,15 @@ body {
 @media (max-width: 350px) {
   .card-text {
     width: 18rem;
+  }
+
+  .get-cards {
+    margin: 1rem;
+    width: 7rem;
+  }
+
+  .search-by {
+    align-items: center;
+    flex-direction: column;
   }
 }
