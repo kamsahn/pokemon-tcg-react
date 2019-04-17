@@ -17,6 +17,11 @@ body {
   font-weight: bold;
 }
 
+.btn-add {
+  margin-bottom: 5%;
+  margin-left: 5%;
+}
+
 .card-text {
   width: 20rem;
 }
@@ -44,6 +49,11 @@ body {
   justify-content: center;
 }
 
+.flex-row-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .get-cards {
   width: 10rem;
 }
@@ -69,6 +79,10 @@ body {
 
 .title {
   text-align: center;
+}
+
+.win-lose-field {
+  width: 2.5rem !important;
 }
 
 @media (max-width: 350px) {
