@@ -42,7 +42,8 @@ class DeckShow extends Component {
 
     return (
       <div className="flex-col-center my-3">
-        <h4>{deck.title}</h4>
+        <h4 className="my-2">{deck.title}</h4>
+        <hr></hr>
         {deck.cards ? (
           <div>
             {sortedCards(deck.cards).map(card => {
@@ -68,18 +69,19 @@ class DeckShow extends Component {
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
         )}
+        <hr></hr>
         {deck.wins > -1 ? (<p>Wins: {deck.wins}</p>) : ''}
         {deck.loses > -1 ? (<p>Loses: {deck.loses}</p>) : ''}
-        <Link to={`${id}/edit`}>Edit</Link>
-        <Link to={{
+        <Link className="my-2" to={`${id}/edit`}>Edit</Link>
+        <Link className="my-2" to={{
           pathname: `${id}/delete`,
           state: { deck: {
             title: deck.title,
             id: deck._id
           } }
         }}>Delete</Link>
-        <Link className="btn btn-info" to='/search-name'>Search By Name</Link>
-        <Link className="btn btn-info" to='/search-set'>Search By Set</Link>
+        <Link className="btn btn-info my-2" to='/search-name'>Search By Name</Link>
+        <Link className="btn btn-info my-2" to='/search-set'>Search By Set</Link>
         {deck.cards && deck.cards.length > 6 ? (
           <DeckDraw deck={deck}/>
         ) : ''}

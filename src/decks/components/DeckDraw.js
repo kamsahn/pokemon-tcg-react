@@ -29,7 +29,7 @@ class DeckDraw extends Component {
 
     return (
       <Fragment>
-        <Button onClick={this.handleClick}>Test Draw</Button>
+        <Button className="my-2" onClick={this.handleClick}>Test Draw</Button>
         {hand ? (
           hand.map(card => (
             <p key={card._id}>

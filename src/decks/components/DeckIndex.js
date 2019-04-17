@@ -35,6 +35,8 @@ class DeckIndex extends Component {
           <p>You do not have any decks yet. Make a new one!</p>
         ) : (
           <div>
+            <h4 className="title">My Decks:</h4>
+            <hr></hr>
             {decks.map(deck => (
               <li key={deck._id}>
                 <Link to={`/decks/${deck._id}`}>{deck.title} created {deck.createdAt.split('T')[0]}</Link>
@@ -43,7 +45,7 @@ class DeckIndex extends Component {
           </div>
         )}
         <div>
-          <Link className="btn btn-info my-2" to={'/decks-new'}>New Deck</Link>
+          <Link className="btn btn-info my-3" to={'/decks-new'}>New Deck</Link>
         </div>
       </div>
     )
