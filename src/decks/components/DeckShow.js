@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
@@ -34,31 +34,37 @@ class DeckShow extends Component {
 
     if (!deck) {
       return (
-        <p>Loading deck...</p>
+        <div className="flex-col-center my-3">
+          <p>Loading deck...</p>
+        </div>
       )
     }
 
     return (
-      <Fragment>
+      <div className="flex-col-center my-3">
         <h4>{deck.title}</h4>
         {deck.cards ? (
-          <Fragment>
+          <div>
             {sortedCards(deck.cards).map(card => {
               return (
                 <p key={card._id}>
-                  {card.types ? (
-                    <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
-                  ) : ''}
-                  {card.name} <Link className="sm-btn-x" to={{
+                  <Link className="sm-btn-x" to={{
                     pathname: '/card-delete',
                     state: { card: {
                       name: card.name,
                       id: card._id
                     } }
-                  }}>X</Link></p>
+                  }}>X</Link>
+                  {card.types ? (
+                    <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
+                  ) : (
+                    <img className="no-type-img mx-1" src={store.types[9].imageUrl}/>
+                  )}
+                  {card.name}
+                </p>
               )
             })}
-          </Fragment>
+          </div>
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
         )}
@@ -77,7 +83,7 @@ class DeckShow extends Component {
         {deck.cards && deck.cards.length > 6 ? (
           <DeckDraw deck={deck}/>
         ) : ''}
-      </Fragment>
+      </div>
     )
   }
 }
