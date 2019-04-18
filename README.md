@@ -22,12 +22,12 @@ API: Repo: https://github.com/kamsahn/pokemon-tcg-express
 
 ## Unsolved Problems / Future Plans
 
-- [] Styling and user experience upgrade
+- [x] Styling and user experience upgrade
 - [] Deck copying for smaller edits
-- [] Hand draw simulator for testing deck viability
+- [x] Hand draw simulator for testing deck viability
 - [x] 60 card deck limit
 - [x] 4 of a kind rule for cards (excluding energy cards)
-- [] Win/lose counter for deck resource
+- [x] Win/lose counter for deck resource
 - [] Have a current deck, making adding cards more seemless
 - [] Advanced search filters
 
@@ -75,4 +75,4 @@ insert here
 
 ## Front End Installation Guide
 
-The PokeDeck Builder is easy to use and run. Just open up the [client](https://kamsahn.github.io/pokemon-tcg-react) in your favorite web browser and sign in to a unique account to create your own decks. If you want to run locally, fork and clone this repo and through your terminal run `npm start` to run a local host version.
+The PokeDeck Builder is easy to use and run. Just open up the [client](https://kamsahn.github.io/pokemon-tcg-react) in your favorite web browser and sign in to a unique account to create your own decks. If you want to run locally, fork and clone this repo and through your terminal run `npm install ` and then `npm start` to run a local host version.
