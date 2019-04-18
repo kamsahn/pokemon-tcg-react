@@ -30,9 +30,13 @@ class DeckUpdate extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const { user, alert } = this.props
+    const { deck } = this.state
     deckUpdate(this.state, user)
       .then(res => this.setState({ redirect: true }))
-      .catch(() => alert(messages.deckUpdateFailure, 'danger'))
+      .catch(() => {
+        alert(messages.deckUpdateFailure, 'danger')
+        this.setState({ deck: { ...deck, title: '' } })
+      })
   }
 
   addOneWin = () => this.setState(prevState => {
