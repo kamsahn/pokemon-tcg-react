@@ -77,6 +77,7 @@ class DeckShow extends Component {
         <hr></hr>
         {deck.wins > -1 ? (<p>Wins: {deck.wins}</p>) : ''}
         {deck.loses > -1 ? (<p>Loses: {deck.loses}</p>) : ''}
+        {deck.cards.length ? (<p>Cards: {deck.cards.length}</p>) : ''}
         <Link className="my-2" to={`${id}/edit`}>Edit</Link>
         <Link className="my-2" to={{
           pathname: `${id}/delete`,
