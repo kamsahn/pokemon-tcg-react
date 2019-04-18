@@ -9,6 +9,7 @@ The PokeDeck Builder app is a deck builder for the Pokemon TCG, specifically gen
 Deployed Client: https://kamsahn.github.io/pokemon-tcg-react
 
 Deployed API: https://pokemon-deckbuilder.herokuapp.com
+*note: nothing should be accessible without authentication via client
 
 API: Repo: https://github.com/kamsahn/pokemon-tcg-express
 
