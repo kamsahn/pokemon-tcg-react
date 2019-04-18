@@ -27,11 +27,16 @@ class CardNameSearch extends Component {
         .then(() => {
           if (this.state.cards.length === 0) {
             alert(messages.searchByNameFailure, 'danger')
+            this.setState({ name: '' })
           }
         })
-        .catch(() => alert(messages.searchByNameFailure, 'danger'))
+        .catch(() => {
+          alert(messages.searchByNameFailure, 'danger')
+          this.setState({ name: '' })
+        })
     } else {
       alert(messages.blankField, 'warning')
+      this.setState({ name: '' })
     }
   }
 
@@ -40,13 +45,13 @@ class CardNameSearch extends Component {
   }
 
   render () {
-    const { cards } = this.state
+    const { name, cards } = this.state
 
     return (
       <div className="flex-col-center my-3">
         <Form onSubmit={this.handleSubmit}>
           <div className="search-by">
-            <Control onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
+            <Control onChange={this.handleChange} type='text' name='name' value={name} placeholder='e.g. Dunsparce'/>
             <Button className="mx-3 get-cards" variant="danger" type='submit'>Get Cards</Button>
           </div>
         </Form>
