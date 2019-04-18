@@ -65,7 +65,7 @@ class DeckShow extends Component {
                   )}
                   <Link className="dark-link" to={{
                     pathname: '/card-show',
-                    state: { card }
+                    state: { card, noAdd: true }
                   }}>{card.name}</Link>
                 </p>
               )

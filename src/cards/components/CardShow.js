@@ -35,6 +35,9 @@ class CardShow extends Component {
     if (this.props.location.state.card.types) {
       this.setState({ type: this.props.location.state.card.types[0] })
     }
+    if (this.props.location.state.noAdd) {
+      this.setState({ noAdd: this.props.location.state.noAdd })
+    }
   }
 
   handleSubmit = event => {
@@ -80,7 +83,7 @@ class CardShow extends Component {
             ))}
           </Fragment>
         ) : ''}
-        {decks.length > 0 && card.attacks ? (
+        {decks.length > 0 && !this.state.noAdd ? (
           <Form onSubmit={this.handleSubmit}>
             <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
               <option value="">--Choose a deck--</option>
