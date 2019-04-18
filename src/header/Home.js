@@ -3,6 +3,13 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const Home = () => (
   <Jumbotron className='my-3 jumbo'>
+    <div className="logo-jumbo">
+      <img className="logo-ball" src='https://i.imgur.com/fE0CGAC.png'/>
+      <img className="logo-ball" src='https://i.imgur.com/JFjBLXv.png'/>
+      <img className="logo-ball" src='https://i.imgur.com/x2Sn8w3.png'/>
+      <img className="logo-ball" src='https://i.imgur.com/NcDfOXk.png'/>
+      <img className="logo-ball" src='https://i.imgur.com/zUE47i0.png'/>
+    </div>
     <h3>Welcome to the PokeDeck Builder for Pokemon TCG!</h3>
     <p>
       This is an easy-to-use app for building Pokemon Card decks, specifically
@@ -17,9 +24,9 @@ const Home = () => (
     </p>
     <div className="logo-jumbo">
       <img className="logo-ball" src='https://i.imgur.com/fE0CGAC.png'/>
-      <img className="logo-ball" src='https://i.imgur.com/NcDfOXk.png'/>
       <img className="logo-ball" src='https://i.imgur.com/JFjBLXv.png'/>
       <img className="logo-ball" src='https://i.imgur.com/x2Sn8w3.png'/>
+      <img className="logo-ball" src='https://i.imgur.com/NcDfOXk.png'/>
       <img className="logo-ball" src='https://i.imgur.com/zUE47i0.png'/>
     </div>
   </Jumbotron>
