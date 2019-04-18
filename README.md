@@ -78,4 +78,4 @@ Though the process was largely smooth, it was not without it's issues. I ran int
 
 ## Front End Installation Guide
 
-The PokeDeck Builder is easy to use and run. Just open up the [client](https://kamsahn.github.io/pokemon-tcg-react) in your favorite web browser and sign in to a unique account to create your own decks. If you want to run locally, fork and clone this repo and through your terminal run `npm start` to run a local host version.
+The PokeDeck Builder is easy to use and run. Just open up the [client](https://kamsahn.github.io/pokemon-tcg-react) in your favorite web browser and sign in to a unique account to create your own decks. If you want to run locally, fork and clone this repo and through your terminal run `npm install` and then `npm start` to run a local host version.
