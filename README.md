@@ -1,6 +1,6 @@
 # Pokemon TCG Deck Builder Front End
 
-![github image](https://i.imgur.com/wTsBind.png)
+![github image](https://i.imgur.com/HGzOZ1Q.png)
 
 The PokeDeck Builder app is a deck builder for the Pokemon TCG, specifically generations 1 and 2 (before Wizards of the Coast sold to Nintendo). Users can sign up to CRUD decks with cards from the selected sets of cards. The app is made with React and a mobile-first mind set. This is a simple-to-use app for nostalgic Pokemon card players.
 
@@ -9,6 +9,7 @@ The PokeDeck Builder app is a deck builder for the Pokemon TCG, specifically gen
 Deployed Client: https://kamsahn.github.io/pokemon-tcg-react
 
 Deployed API: https://pokemon-deckbuilder.herokuapp.com
+
 *note: nothing should be accessible without authentication via client
 
 API: Repo: https://github.com/kamsahn/pokemon-tcg-express
