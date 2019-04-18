@@ -28,7 +28,7 @@ const DeckForms = (
         </div>
       </Fragment>
     ) : ''}
-    <Button variant="info" type="submit">Submit</Button>
+    <Button variant="danger" type="submit">Submit</Button>
   </Form>
 )
 

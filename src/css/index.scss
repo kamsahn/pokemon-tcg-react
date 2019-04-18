@@ -7,6 +7,10 @@ $light-gray: #dbdbdb;
 $cobalt: #003aab;
 $seafoam: #00ab72;
 
+$pokeblue: #3d7dca;
+$pokeyellow: #ffcb05;
+$pokenavy: #003a70;
+
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
@@ -71,6 +75,22 @@ body {
 .jumbo {
   background-image: linear-gradient(to bottom right, $seafoam, $cobalt) !important;
   color: $light-gray;
+}
+
+.logo {
+  height: auto;
+  width: 100%;
+}
+
+.logo-ball {
+  height: 8%;
+  width: 8%;
+}
+
+.logo-jumbo {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
 }
 
 .search-by {

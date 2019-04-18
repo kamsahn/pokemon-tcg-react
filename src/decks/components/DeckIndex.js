@@ -47,7 +47,7 @@ class DeckIndex extends Component {
           </div>
         )}
         <div>
-          <Link className="btn btn-info my-3" to={'/decks-new'}>New Deck</Link>
+          <Link className="btn btn-danger my-3" to={'/decks-new'}>New Deck</Link>
         </div>
       </div>
     )

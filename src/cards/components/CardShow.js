@@ -88,7 +88,7 @@ class CardShow extends Component {
                 <option key={deck.id} value={deck.id}>{deck.title}</option>
               ))}
             </select>
-            <Button className="m-2" variant="info" type="submit">Add</Button>
+            <Button className="m-2" variant="danger" type="submit">Add</Button>
           </Form>
         ) : ''}
       </div>

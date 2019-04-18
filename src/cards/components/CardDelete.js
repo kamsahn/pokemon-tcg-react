@@ -50,7 +50,7 @@ class CardDelete extends Component {
         </Form>
         <Form>
           <Label>No, take me back</Label>
-          <Link className="btn btn-info m-2" to={'/decks'}>Back</Link>
+          <Link className="btn btn-primary m-2" to={'/decks'}>Back</Link>
         </Form>
       </div>
     )

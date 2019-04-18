@@ -47,7 +47,7 @@ class CardNameSearch extends Component {
         <Form onSubmit={this.handleSubmit}>
           <div className="search-by">
             <Control onChange={this.handleChange} type='text' name='name' placeholder='e.g. Dunsparce'/>
-            <Button className="mx-3 get-cards" variant="info" type='submit'>Get Cards</Button>
+            <Button className="mx-3 get-cards" variant="danger" type='submit'>Get Cards</Button>
           </div>
         </Form>
 

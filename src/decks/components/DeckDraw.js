@@ -30,16 +30,20 @@ class DeckDraw extends Component {
     return (
       <Fragment>
         <Button className="my-2" onClick={this.handleClick}>Test Draw</Button>
-        {hand ? (
-          hand.map(card => (
-            <p key={card._id}>
-              {card.types ? (
-                <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
-              ) : ''}
-              {card.name}
-            </p>
-          ))
-        ) : ''}
+        <div className="my-2">
+          {hand ? (
+            hand.map(card => (
+              <p key={card._id}>
+                {card.types ? (
+                  <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
+                ) : (
+                  <img className="sm-icon mx-1" src={store.types[9].imageUrl}/>
+                )}
+                {card.name}
+              </p>
+            ))
+          ) : ''}
+        </div>
       </Fragment>
     )
   }

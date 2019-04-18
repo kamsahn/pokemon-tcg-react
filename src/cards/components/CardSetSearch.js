@@ -57,7 +57,7 @@ class CardSetSearch extends Component {
             <option value="ecard2">Aquapolis</option>
             <option value="ecard3">Skyridge</option>
           </select>
-          <input type="submit" className="btn btn-info space" value="Get Cards"/>
+          <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
 
         {cards ? (

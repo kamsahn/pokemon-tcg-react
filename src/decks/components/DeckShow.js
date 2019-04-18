@@ -85,8 +85,8 @@ class DeckShow extends Component {
             id: deck._id
           } }
         }}>Delete</Link>
-        <Link className="btn btn-info my-2" to='/search-name'>Search By Name</Link>
-        <Link className="btn btn-info my-2" to='/search-set'>Search By Set</Link>
+        <Link className="btn btn-danger my-2" to='/search-name'>Search By Name</Link>
+        <Link className="btn btn-danger my-2" to='/search-set'>Search By Set</Link>
         {deck.cards && deck.cards.length > 6 ? (
           <DeckDraw deck={deck}/>
         ) : ''}
