@@ -67,7 +67,7 @@ Though the process was largely smooth, it was not without it's issues. I ran int
 
 ## Wireframe
 
-[tcg-wireframe](https://i.imgur.com/XHTbUoS.jpg)
+![github image](https://i.imgur.com/XHTbUoS.jpg)
 
 ## Client Screen Shots
 
