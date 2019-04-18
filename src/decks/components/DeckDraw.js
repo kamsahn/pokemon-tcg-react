@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Button from 'react-bootstrap/Button'
+import { store } from '../../store'
 const shuffle = require('knuth-shuffle').knuthShuffle
 
 class DeckDraw extends Component {
@@ -28,12 +29,21 @@ class DeckDraw extends Component {
 
     return (
       <Fragment>
-        <Button onClick={this.handleClick}>Test Draw</Button>
-        {hand ? (
-          hand.map(card => (
-            <p key={card._id}>{card.name}</p>
-          ))
-        ) : ''}
+        <Button className="my-2" onClick={this.handleClick}>Test Draw</Button>
+        <div className="my-2">
+          {hand ? (
+            hand.map(card => (
+              <p key={card._id}>
+                {card.types ? (
+                  <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
+                ) : (
+                  <img className="sm-icon mx-1" src={store.types[9].imageUrl}/>
+                )}
+                {card.name}
+              </p>
+            ))
+          ) : ''}
+        </div>
       </Fragment>
     )
   }

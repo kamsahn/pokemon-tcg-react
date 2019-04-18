@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$black: #000;
+$bright-white: #f2f2f2;
+$delete: #ff3232;
+$light-gray: #dbdbdb;
+$cobalt: #003aab;
+$seafoam: #00ab72;
+
+$pokeblue: #3d7dca;
+$pokeyellow: #ffcb05;
+$pokenavy: #003a70;
+
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -8,6 +21,115 @@ body {
   margin: 30px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.btn-add {
+  margin-bottom: 5%;
+  margin-left: 5%;
+}
+
+.card-text {
+  width: 20rem;
+}
+
+.dark-link {
+  color: $black;
+}
+
+.disclaimer {
+  font-size: .8em;
+}
+
+.drop-search {
+  background-color: $light-gray !important;
+}
+
+.flex-col-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-row-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.get-cards {
+  width: 10rem;
+}
+
+.home-link {
+  color: $black;
+  text-align: center;
+  width: 20rem;
+}
+
+.jumbo {
+  background-image: linear-gradient(to bottom right, $seafoam, $cobalt) !important;
+  color: $light-gray;
+}
+
+.logo {
+  height: auto;
+  width: 100%;
+}
+
+.logo-ball {
+  height: 8%;
+  width: 8%;
+}
+
+.logo-jumbo {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+}
+
+.search-by {
+  display: flex;
+}
+
+.sm-icon {
+  height: 20px;
+  width: 20px;
+}
+
 .space {
   margin: 15px;
+}
+
+.title {
+  text-align: center;
+}
+
+.win-lose-field {
+  width: 3.5rem !important;
+}
+
+@media (max-width: 350px) {
+  .card-text {
+    width: 18rem;
+  }
+
+  .get-cards {
+    margin: 1rem;
+    width: 7rem;
+  }
+
+  .search-by {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .win-lose-field {
+    width: 2.5rem !important;
+  }
 }

@@ -1,7 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { deckIndex } from '../api'
 import messages from '../messages'
 import { Link } from 'react-router-dom'
+
+const sortedDecks = decks => decks.sort((a, b) => b.wins - a.wins)
 
 class DeckIndex extends Component {
   constructor () {
@@ -22,26 +24,32 @@ class DeckIndex extends Component {
     const { decks } = this.state
 
     if (!decks) {
-      return <p>Loading decks...</p>
+      return (
+        <div className="flex-col-center my-3">
+          <p>Loading decks...</p>
+        </div>
+      )
     }
 
     return (
-      <Fragment>
+      <div className="flex-col-center my-3">
         {decks.length === 0 ? (
           <p>You do not have any decks yet. Make a new one!</p>
         ) : (
-          <Fragment>
-            {decks.map(deck => (
+          <div>
+            <h4 className="title">My Decks:</h4>
+            <hr></hr>
+            {sortedDecks(decks).map(deck => (
               <li key={deck._id}>
-                <Link to={`/decks/${deck._id}`}>{deck.title} created {deck.createdAt.split('T')[0]}</Link>
+                <Link to={`/decks/${deck._id}`}>{deck.title}</Link>
               </li>
             ))}
-          </Fragment>
+          </div>
         )}
         <div>
-          <Link className="btn btn-info my-2" to={'/decks-new'}>New Deck</Link>
+          <Link className="btn btn-danger my-3" to={'/decks-new'}>New Deck</Link>
         </div>
-      </Fragment>
+      </div>
     )
   }
 }

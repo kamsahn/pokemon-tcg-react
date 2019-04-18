@@ -1,8 +1,15 @@
 $charcoal: #bbb;
+$bright-white: #f2f2f2;
+
+$pokeblue: #3d7dca;
+$pokeyellow: #ffcb05;
+$pokenavy: #003a70;
+$pokered: #f00000;
 
 .main-header {
   align-items: center;
-  border-bottom: 1px solid $charcoal;
+  background-color: $pokeyellow;
+  border-bottom: 5px solid $pokered;
   display: flex;
   height: 100px;
   padding: 0 20px;
@@ -11,6 +18,10 @@ $charcoal: #bbb;
   span {
     font-size: 1.2em;
     margin: 0 15px;
+  }
+
+  h1 {
+    color: $pokenavy;
   }
 }
 
@@ -24,12 +35,12 @@ $charcoal: #bbb;
 @media (max-width: 600px) {
   .main-header {
     flex-direction: column;
-    font-size: 0.7em;
+    font-size: .7em;
     height: auto;
     padding: 10px;
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2em;
     }
   }
 }
@@ -41,7 +52,9 @@ $charcoal: #bbb;
 
     a,
     span {
+      background-color: $pokered;
       border: 1px solid $charcoal;
+      color: $bright-white;
       margin-bottom: 5px;
       text-align: center;
       width: 80%;

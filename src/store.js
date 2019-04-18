@@ -71,6 +71,8 @@ export const store = {
     { type: 'Darkness',
       imageUrl: 'https://i.imgur.com/a5gl2JU.png' },
     { type: 'Metal',
-      imageUrl: 'https://i.imgur.com/wOWplV9.png' }
+      imageUrl: 'https://i.imgur.com/wOWplV9.png' },
+    { type: 'None',
+      imageUrl: 'https://i.imgur.com/zMgwst5.png' }
   ]
 }

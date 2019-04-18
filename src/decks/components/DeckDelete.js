@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { deckDelete } from '../api'
 import messages from '../messages'
@@ -42,17 +42,17 @@ class DeckDelete extends Component {
     }
 
     return (
-      <Fragment>
-        <p>Are you sure you want to delete {deck.title}?</p>
-        <Form onSubmit={this.handleDelete}>
-          <Label>Yes, I am sure</Label>
-          <Button className="my-2" variant="danger" type="submit">Delete</Button>
+      <div className="flex-col-center my-3">
+        <h5>Are you sure you want to delete {deck.title}?</h5>
+        <Form className="my-3" onSubmit={this.handleDelete}>
+          <Label>Yes, I am sure.</Label>
+          <Button className="m-2" variant="danger" type="submit">Delete</Button>
         </Form>
         <Form>
-          <Label>No, take me back</Label>
-          <Link className="btn btn-info" to={'/decks'}>Back</Link>
+          <Label>No, take me back.</Label>
+          <Link className="btn btn-primary m-2" to={'/decks'}>Back</Link>
         </Form>
-      </Fragment>
+      </div>
     )
   }
 }

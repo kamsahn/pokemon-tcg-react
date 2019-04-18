@@ -6,8 +6,9 @@ import messages from '../messages'
 import { cardCreate } from '../api'
 import { deckIndex } from '../../decks/api'
 import deckMessages from '../../decks/messages'
-import { store } from '../../store'
+// import { store } from '../../store'
 import Attack from './Attack'
+import Ability from './Ability'
 
 class CardShow extends Component {
   constructor () {
@@ -34,6 +35,9 @@ class CardShow extends Component {
     if (this.props.location.state.card.types) {
       this.setState({ type: this.props.location.state.card.types[0] })
     }
+    if (this.props.location.state.noAdd) {
+      this.setState({ noAdd: this.props.location.state.noAdd })
+    }
   }
 
   handleSubmit = event => {
@@ -51,21 +55,26 @@ class CardShow extends Component {
   }
 
   render () {
-    const { card, decks, type } = this.state
-    const typeObj = store.types.find(obj => obj.type === type)
+    const { card, decks } = this.state
 
     if (!card) {
       return <p>loading...</p>
     }
 
     return (
-      <Fragment>
-        <img src={card.imageUrl}/>
-        {typeObj ? (
-          <img src={typeObj.imageUrl}/>
+      <div className="flex-col-center my-2">
+        <img className="my-3" src={card.imageUrl}/>
+        {card.ability ? (
+          <Fragment>
+            <h5>Ability:</h5>
+            <Ability
+              ability={card.ability}
+            />
+          </Fragment>
         ) : ''}
         {card.attacks ? (
           <Fragment>
+            <h5>Attacks:</h5>
             {card.attacks.map(attack => (
               <Attack
                 key={attack.name}
@@ -74,16 +83,18 @@ class CardShow extends Component {
             ))}
           </Fragment>
         ) : ''}
-        <Form onSubmit={this.handleSubmit}>
-          <select onChange={this.handleChange} id="deck-select" name="deck">
-            <option value="">--Choose a deck--</option>
-            {decks.map(deck => (
-              <option key={deck.id} value={deck.id}>{deck.title}</option>
-            ))}
-          </select>
-          <Button variant="info" type="submit">Submit</Button>
-        </Form>
-      </Fragment>
+        {decks.length > 0 && !this.state.noAdd ? (
+          <Form onSubmit={this.handleSubmit}>
+            <select className="btn drop-search" onChange={this.handleChange} id="deck-select" name="deck">
+              <option value="">--Choose a deck--</option>
+              {decks.map(deck => (
+                <option key={deck.id} value={deck.id}>{deck.title}</option>
+              ))}
+            </select>
+            <Button className="m-2" variant="danger" type="submit">Add</Button>
+          </Form>
+        ) : ''}
+      </div>
     )
   }
 }

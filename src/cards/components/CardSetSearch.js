@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { getCardsBySet } from '../api.js'
 import messages from '../messages'
 import Card from './Card'
@@ -23,17 +23,21 @@ class CardSetSearch extends Component {
     event.preventDefault()
     const { setCode } = this.state
     const { alert } = this.props
-    getCardsBySet(setCode)
-      .then(res => this.setState({ cards: sortedCards(res) }))
-      .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    if (setCode) {
+      getCardsBySet(setCode)
+        .then(res => this.setState({ cards: sortedCards(res) }))
+        .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    } else {
+      alert(messages.blankField, 'warning')
+    }
   }
 
   render () {
     const { cards } = this.state
     return (
-      <Fragment>
-        <form onSubmit={this.clickSearch}>
-          <select onChange={this.handleChange} id="set-select" name="set-select">
+      <div className="flex-col-center my-3">
+        <form className="flex-col-center" onSubmit={this.clickSearch}>
+          <select className="btn drop-search" onChange={this.handleChange} id="set-select" name="set-select">
             <option value="">--Choose a set--</option>
             <option value="base1">Base</option>
             <option value="base2">Jungle</option>
@@ -53,7 +57,7 @@ class CardSetSearch extends Component {
             <option value="ecard2">Aquapolis</option>
             <option value="ecard3">Skyridge</option>
           </select>
-          <input type="submit" className="btn btn-info space" value="Get Cards"/>
+          <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
 
         {cards ? (
@@ -65,7 +69,7 @@ class CardSetSearch extends Component {
             />
           ))
         ) : '' }
-      </Fragment>
+      </div>
     )
   }
 }

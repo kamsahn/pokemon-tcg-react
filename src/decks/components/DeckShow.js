@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { deckShow } from '../api'
 import messages from '../messages'
-// import { store } from '../../store'
+import { store } from '../../store'
 import DeckDraw from './DeckDraw'
 
 const sortedCards = cards => cards.sort((a, b) => {
@@ -34,44 +34,63 @@ class DeckShow extends Component {
 
     if (!deck) {
       return (
-        <p>Loading deck...</p>
+        <div className="flex-col-center my-3">
+          <p>Loading deck...</p>
+        </div>
       )
     }
 
     return (
-      <Fragment>
-        <h4>{deck.title}</h4>
+      <div className="flex-col-center my-3">
+        <h4 className="my-2">{deck.title}</h4>
+        <hr></hr>
         {deck.cards ? (
-          <Fragment>
+          <div>
             {sortedCards(deck.cards).map(card => {
               return (
-                <p key={card._id}> {card.name} <Link to={{
-                  pathname: '/card-delete',
-                  state: { card: {
-                    name: card.name,
-                    id: card._id
-                  } }
-                }}>X</Link></p>
+                <p key={card._id}>
+                  <Link to={{
+                    pathname: '/card-delete',
+                    state: { card: {
+                      name: card.name,
+                      id: card._id
+                    } }
+                  }}>
+                    <img className="sm-icon mx-2" src='https://i.imgur.com/Odp5zZY.jpg'/>
+                  </Link>
+                  {card.types ? (
+                    <img className="mx-1" src={store.types.find(obj => obj.type === card.types).imageUrl}/>
+                  ) : (
+                    <img className="sm-icon mx-1" src={store.types[9].imageUrl}/>
+                  )}
+                  <Link className="dark-link" to={{
+                    pathname: '/card-show',
+                    state: { card, noAdd: true }
+                  }}>{card.name}</Link>
+                </p>
               )
             })}
-          </Fragment>
+          </div>
         ) : (
           <p>No cards in this deck yet. Try adding some!</p>
         )}
-        <Link to={`${id}/edit`}>Edit</Link>
-        <Link to={{
+        <hr></hr>
+        {deck.wins > -1 ? (<p>Wins: {deck.wins}</p>) : ''}
+        {deck.loses > -1 ? (<p>Loses: {deck.loses}</p>) : ''}
+        <Link className="my-2" to={`${id}/edit`}>Edit</Link>
+        <Link className="my-2" to={{
           pathname: `${id}/delete`,
           state: { deck: {
             title: deck.title,
             id: deck._id
           } }
         }}>Delete</Link>
-        <Link className="btn btn-info" to='/search-name'>Search By Name</Link>
-        <Link className="btn btn-info" to='/search-set'>Search By Set</Link>
+        <Link className="btn btn-danger my-2" to='/search-name'>Search By Name</Link>
+        <Link className="btn btn-danger my-2" to='/search-set'>Search By Set</Link>
         {deck.cards && deck.cards.length > 6 ? (
           <DeckDraw deck={deck}/>
         ) : ''}
-      </Fragment>
+      </div>
     )
   }
 }
