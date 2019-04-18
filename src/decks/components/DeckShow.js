@@ -66,7 +66,7 @@ class DeckShow extends Component {
                   <Link className="dark-link" to={{
                     pathname: '/card-show',
                     state: { card, noAdd: true }
-                  }}>{card.name}</Link>
+                  }}>{card.name} ({store.sets.find(obj => obj.code === card.setCode).name})</Link>
                 </p>
               )
             })}
