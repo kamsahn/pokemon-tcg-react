@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 $black: #000;
 $bright-white: #f2f2f2;
 $delete: #ff3232;
 $light-gray: #dbdbdb;
+$cobalt: #003aab;
+$seafoam: #00ab72;
 
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -62,6 +66,11 @@ body {
   color: $black;
   text-align: center;
   width: 20rem;
+}
+
+.jumbo {
+  background-image: linear-gradient(to bottom right, $seafoam, $cobalt) !important;
+  color: $light-gray;
 }
 
 .search-by {

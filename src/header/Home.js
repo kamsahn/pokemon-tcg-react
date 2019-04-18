@@ -2,7 +2,7 @@ import React from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const Home = () => (
-  <Jumbotron className='my-3'>
+  <Jumbotron className='my-3 jumbo'>
     <h3>Welcome to the PokeDeck Builder for Pokemon TCG!</h3>
     <p>
       This is an easy-to-use app for building Pokemon Card decks, specifically

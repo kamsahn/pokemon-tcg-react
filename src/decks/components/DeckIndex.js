@@ -3,6 +3,8 @@ import { deckIndex } from '../api'
 import messages from '../messages'
 import { Link } from 'react-router-dom'
 
+const sortedDecks = decks => decks.sort((a, b) => b.wins - a.wins)
+
 class DeckIndex extends Component {
   constructor () {
     super()
@@ -37,9 +39,9 @@ class DeckIndex extends Component {
           <div>
             <h4 className="title">My Decks:</h4>
             <hr></hr>
-            {decks.map(deck => (
+            {sortedDecks(decks).map(deck => (
               <li key={deck._id}>
-                <Link to={`/decks/${deck._id}`}>{deck.title} created {deck.createdAt.split('T')[0]}</Link>
+                <Link to={`/decks/${deck._id}`}>{deck.title}</Link>
               </li>
             ))}
           </div>
