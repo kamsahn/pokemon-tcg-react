@@ -1,6 +1,6 @@
 # Pokemon TCG Deck Builder Front End
 
-![github image](https://i.imgur.com/HGzOZ1Q.png)
+![github image](https://i.imgur.com/aA27S0D.png)
 
 The PokeDeck Builder app is a deck builder for the Pokemon TCG, specifically generations 1 and 2 (before Wizards of the Coast sold to Nintendo). Users can sign up to CRUD decks with cards from the selected sets of cards. The app is made with React and a mobile-first mind set. This is a simple-to-use app for nostalgic Pokemon card players.
 

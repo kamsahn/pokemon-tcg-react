@@ -35,7 +35,7 @@ const searchOptions = (
 const Header = ({ user }) => (
   <header className="main-header">
     <Link to="/"><h1 className="home-link">
-      <img className="logo" src='https://i.imgur.com/HGzOZ1Q.png'/>
+      <img className="logo" src='https://i.imgur.com/aA27S0D.png'/>
     </h1></Link>
     <nav>
       { searchOptions }
