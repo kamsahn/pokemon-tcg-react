@@ -22,7 +22,7 @@ API: Repo: https://github.com/kamsahn/pokemon-tcg-express
 
 ## Unsolved Problems / Future Plans
 
-- [] Styling and user experience upgrade
+- [x] Styling and user experience upgrade
 - [] Deck copying for smaller edits
 - [x] Hand draw simulator for testing deck viability
 - [x] 60 card deck limit
