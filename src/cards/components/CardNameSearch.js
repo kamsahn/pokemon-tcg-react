@@ -6,6 +6,12 @@ import Card from './Card'
 import Form, { Control } from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+const sortedCards = cards => cards.sort((a, b) => {
+  if (a.id < b.id) { return -1 }
+  if (a.id > b.id) { return 1 }
+  return 0
+})
+
 class CardNameSearch extends Component {
   constructor () {
     super()
@@ -58,7 +64,7 @@ class CardNameSearch extends Component {
 
         {cards ? (
           <Fragment>
-            {cards.map(card => {
+            {sortedCards(cards).map(card => {
               return (
                 <Card
                   key={card.id}
