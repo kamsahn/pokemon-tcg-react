@@ -16,10 +16,8 @@ class DeckDraw extends Component {
     const { deck } = this.props
     const shuffled = shuffle(deck.cards.slice(0))
     const hand = []
-    let c = 0
-    while (c < 7) {
+    while (hand.length < 7) {
       hand.push(shuffled.shift())
-      c++
     }
     this.setState({ hand })
   }
