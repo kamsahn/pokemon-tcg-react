@@ -84,7 +84,7 @@ class CardSetSearch extends Component {
               <option value="Water">Water</option>
             </select>
           ) : (
-            <p className="my-1 psuedo-link" onClick={this.clickAdvanced}>Advanced Search</p>
+            <p className="my-1 pseudo-link" onClick={this.clickAdvanced}>Advanced Search</p>
           )}
           <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
