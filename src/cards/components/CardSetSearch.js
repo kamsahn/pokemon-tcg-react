@@ -10,7 +10,7 @@ class CardSetSearch extends Component {
     super()
 
     this.state = {
-      cards: [],
+      cards: null,
       setCode: null
     }
   }
@@ -89,7 +89,7 @@ class CardSetSearch extends Component {
           <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
 
-        {cards ? (
+        {cards instanceof Array ? (cards.length > 0 ? (
           cards.map(card => (
             <Card
               key={card.id}
@@ -97,6 +97,7 @@ class CardSetSearch extends Component {
               user={this.props.user}
             />
           ))
+        ) : <p>There were no cards from this search</p>
         ) : '' }
       </div>
     )
