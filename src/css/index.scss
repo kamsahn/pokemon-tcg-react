@@ -44,6 +44,7 @@ body {
 
 .drop-search {
   background-color: $light-gray !important;
+  margin: .5em;
 }
 
 .flex-col-center {
@@ -91,6 +92,13 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin: 2rem 0;
+}
+
+.psuedo-link {
+  color: blue;
+  cursor: pointer;
+  font-size: .8em;
+  text-decoration: underline;
 }
 
 .search-by {

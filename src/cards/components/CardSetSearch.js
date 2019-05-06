@@ -29,7 +29,7 @@ class CardSetSearch extends Component {
     const { alert } = this.props
     if (setCode && types && supertype) {
       advSearch(setCode, types, supertype)
-        .then(res => this.setState({ cards: sortedCards(res) }))
+        .then(res => res.length > 0 ? this.setState({ cards: sortedCards(res) }) : alert(messages.noResults, 'warning'))
         .catch(() => alert(messages.searchBySetFailure, 'danger'))
     } else if (setCode) {
       getCardsBySet(setCode)
@@ -84,12 +84,12 @@ class CardSetSearch extends Component {
               <option value="Water">Water</option>
             </select>
           ) : (
-            <p onClick={this.clickAdvanced}>Advanced Search</p>
+            <p className="my-1 psuedo-link" onClick={this.clickAdvanced}>Advanced Search</p>
           )}
           <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
 
-        {cards instanceof Array ? (cards.length > 0 ? (
+        {cards ? (
           cards.map(card => (
             <Card
               key={card.id}
@@ -97,7 +97,6 @@ class CardSetSearch extends Component {
               user={this.props.user}
             />
           ))
-        ) : <p>There were no cards from this search</p>
         ) : '' }
       </div>
     )

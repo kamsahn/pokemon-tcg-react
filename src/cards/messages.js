@@ -5,5 +5,6 @@ export default {
   cardCreateFailure: 'Could not add your card. Note: you can only have 60 cards in a deck and only 4 of a kind (excluding basic energies).',
   cardDeleteSuccess: 'Successfully deleted this card from your deck.',
   cardDeleteFailure: 'Could not delete this card. Make sure you are signed in correctly.',
-  blankField: 'Cannot search with a blank fields. Please enter search parameters.'
+  blankField: 'Cannot search with a blank fields. Please enter search parameters.',
+  noResults: 'There were no results from this search.'
 }
