@@ -33,7 +33,7 @@ API: Repo: https://github.com/kamsahn/pokemon-tcg-express
 - [x] 4 of a kind rule for cards (excluding energy cards)
 - [x] Win/lose counter for deck resource
 - [ ] Have a current deck, making adding cards more seemless
-- [ ] Advanced search filters
+- [x] Advanced search filters
 
 ## The Story
 
