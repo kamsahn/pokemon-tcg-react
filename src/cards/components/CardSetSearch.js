@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getCardsBySet } from '../api.js'
+import { getCardsBySet, advSearch } from '../api.js'
 import messages from '../messages'
 import Card from './Card'
 
@@ -15,15 +15,23 @@ class CardSetSearch extends Component {
     }
   }
 
-  handleChange = event => {
+  handleChangeSet = event => {
     this.setState({ setCode: event.target.value })
+  }
+
+  handleChangeTypes = event => {
+    this.setState({ types: event.target.value, supertype: 'Pokémon' })
   }
 
   clickSearch = (event) => {
     event.preventDefault()
-    const { setCode } = this.state
+    const { setCode, types, supertype } = this.state
     const { alert } = this.props
-    if (setCode) {
+    if (setCode && types && supertype) {
+      advSearch(setCode, types, supertype)
+        .then(res => this.setState({ cards: sortedCards(res) }))
+        .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    } else if (setCode) {
       getCardsBySet(setCode)
         .then(res => this.setState({ cards: sortedCards(res) }))
         .catch(() => alert(messages.searchBySetFailure, 'danger'))
@@ -32,12 +40,17 @@ class CardSetSearch extends Component {
     }
   }
 
+  clickAdvanced = (event) => {
+    event.preventDefault()
+    this.setState({ adv: 'clicked' })
+  }
+
   render () {
-    const { cards } = this.state
+    const { cards, adv } = this.state
     return (
       <div className="flex-col-center my-3">
         <form className="flex-col-center" onSubmit={this.clickSearch}>
-          <select className="btn drop-search" onChange={this.handleChange} id="set-select" name="set-select">
+          <select className="btn drop-search" onChange={this.handleChangeSet} id="set-select" name="set-select">
             <option value="">--Choose a set--</option>
             <option value="base1">Base</option>
             <option value="base2">Jungle</option>
@@ -57,6 +70,22 @@ class CardSetSearch extends Component {
             <option value="ecard2">Aquapolis</option>
             <option value="ecard3">Skyridge</option>
           </select>
+          {adv ? (
+            <select className="btn drop-search" onChange={this.handleChangeTypes} id="types-select" name="types-select">
+              <option value="">--Choose a pokemon type--</option>
+              <option value="Colorless">Colorless</option>
+              <option value="Dark">Dark</option>
+              <option value="Fighting">Fighting</option>
+              <option value="Fire">Fire</option>
+              <option value="Grass">Grass</option>
+              <option value="Lightning">Lightning</option>
+              <option value="Metal">Metal</option>
+              <option value="Psychic">Psychic</option>
+              <option value="Water">Water</option>
+            </select>
+          ) : (
+            <p onClick={this.clickAdvanced}>Advanced Search</p>
+          )}
           <input type="submit" className="btn btn-danger space" value="Get Cards"/>
         </form>
 
