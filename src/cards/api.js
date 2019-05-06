@@ -6,8 +6,12 @@ export const getCardsBySet = (id) => (
   pokemon.card.where({ setCode: id })
 )
 
-export const advSearch = (setCode, types, supertype) => (
+export const advSearchPokemon = (setCode, types, supertype) => (
   pokemon.card.where({ setCode, types, supertype })
+)
+
+export const advSearchTrainer = (setCode, supertype) => (
+  pokemon.card.where({ setCode, supertype })
 )
 
 export const getCardsByName = (name) => (

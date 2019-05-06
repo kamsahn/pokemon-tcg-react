@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { getCardsBySet, advSearch } from '../api.js'
+import React, { Component, Fragment } from 'react'
+import { getCardsBySet, advSearchPokemon, advSearchTrainer } from '../api.js'
 import messages from '../messages'
 import Card from './Card'
 
@@ -19,8 +19,12 @@ class CardSetSearch extends Component {
     this.setState({ setCode: event.target.value })
   }
 
+  handleChangeSupertype = event => {
+    this.setState({ supertype: event.target.value })
+  }
+
   handleChangeTypes = event => {
-    this.setState({ types: event.target.value, supertype: 'Pokémon' })
+    this.setState({ types: event.target.value })
   }
 
   clickSearch = (event) => {
@@ -28,7 +32,11 @@ class CardSetSearch extends Component {
     const { setCode, types, supertype } = this.state
     const { alert } = this.props
     if (setCode && types && supertype) {
-      advSearch(setCode, types, supertype)
+      advSearchPokemon(setCode, types, supertype)
+        .then(res => res.length > 0 ? this.setState({ cards: sortedCards(res) }) : alert(messages.noResults, 'warning'))
+        .catch(() => alert(messages.searchBySetFailure, 'danger'))
+    } else if (setCode && supertype) {
+      advSearchTrainer(setCode, supertype)
         .then(res => res.length > 0 ? this.setState({ cards: sortedCards(res) }) : alert(messages.noResults, 'warning'))
         .catch(() => alert(messages.searchBySetFailure, 'danger'))
     } else if (setCode) {
@@ -42,11 +50,11 @@ class CardSetSearch extends Component {
 
   clickAdvanced = (event) => {
     event.preventDefault()
-    this.setState({ adv: 'clicked' })
+    this.setState({ adv: 'selected' })
   }
 
   render () {
-    const { cards, adv } = this.state
+    const { cards, adv, supertype } = this.state
     return (
       <div className="flex-col-center my-3">
         <form className="flex-col-center" onSubmit={this.clickSearch}>
@@ -71,18 +79,27 @@ class CardSetSearch extends Component {
             <option value="ecard3">Skyridge</option>
           </select>
           {adv ? (
-            <select className="btn drop-search" onChange={this.handleChangeTypes} id="types-select" name="types-select">
-              <option value="">--Choose a pokemon type--</option>
-              <option value="Colorless">Colorless</option>
-              <option value="Dark">Dark</option>
-              <option value="Fighting">Fighting</option>
-              <option value="Fire">Fire</option>
-              <option value="Grass">Grass</option>
-              <option value="Lightning">Lightning</option>
-              <option value="Metal">Metal</option>
-              <option value="Psychic">Psychic</option>
-              <option value="Water">Water</option>
-            </select>
+            <Fragment>
+              <select className="btn drop-search" onChange={this.handleChangeSupertype} id="supertype-select" name="supertype-select">
+                <option value="">--Choose a card type--</option>
+                <option value="Pokémon">Pokemon</option>
+                <option value="Trainer">Trainer</option>
+              </select>
+              {supertype === 'Pokémon' ? (
+                <select className="btn drop-search" onChange={this.handleChangeTypes} id="types-select" name="types-select">
+                  <option value="">--Choose a pokemon type--</option>
+                  <option value="Colorless">Colorless</option>
+                  <option value="Darkness">Darkness</option>
+                  <option value="Fighting">Fighting</option>
+                  <option value="Fire">Fire</option>
+                  <option value="Grass">Grass</option>
+                  <option value="Lightning">Lightning</option>
+                  <option value="Metal">Metal</option>
+                  <option value="Psychic">Psychic</option>
+                  <option value="Water">Water</option>
+                </select>
+              ) : ('')}
+            </Fragment>
           ) : (
             <p className="my-1 pseudo-link" onClick={this.clickAdvanced}>Advanced Search</p>
           )}
